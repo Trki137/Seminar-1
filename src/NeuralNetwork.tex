@@ -1,7 +1,5 @@
 %! Author = Dean
 %! Date = 12/16/2023
-
-
 \chapter{Neuronske mreže}\label{ch:neuronske-mreze}
 
 Neuronske mreže čine podskup strojnog učenja i predstavljaju temelj algoritama dubokog učenja.
@@ -13,12 +11,14 @@ Prvi model umjetnog neurona je razvijen od strane Warrena McCullocha i Waltera P
 model umjetnog neurona. Ovaj model oponaša funkcionalnost biološkog neurona, gdje ulazni signali utječu na odluku neurona o tome hoće li
 se on aktivirati ili ne
 McCulloch-Pitts model umjetnog neurona sastoji se od \textit{n} ulaznih značajki ili signala, označenih s $x_1, x_2, \dots, x_n$, te njihovim pripadajućim težinama $w_1, w_2, \dots, w_n$ koje određuju važnost pojedinih informacija.
-\begin{figure}[H]
+\FloatBarrier
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Umjetni_neuron}
     \caption{McCulloch-Pitts model umjetnog neurona}
     \label{fig:slika1}
 \end{figure}
+\FloatBarrier
 Težinska suma neurona \emph{net} se izračunava kao suma ulaznih značajki
 \[ net = x_0*w_0 + x_1*w_1 + \dots + x_n*w_n \]
 Gdje nam $w_0$ označava takozvana vrijednost praga \emph(bias) koji služi kako bismo odredili kada će neuron biti aktivan ili ne.
@@ -37,7 +37,8 @@ Najjednostavnija moguća aktivacijska funkcija je funkcija identiteta
 Danas najčešće korištene aktivacijske funkcije us sigmoidalna u ReLU.
 Sigmoidalna funkcija je definirana kao:
 \[ f(\textit{net}) = \frac{1}{1 + e^-net} \]
-\begin{figure}[H]
+\FloatBarrier
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Sigmoid}
     \caption{Sigmoidalna funkcija}
@@ -46,10 +47,60 @@ Sigmoidalna funkcija je definirana kao:
 Kodomena sigmoidalne funkcije je (0, 1) gdje će za jako velike vrijednosti težiti ka 1 a za jako male vrijednosti težiti ka 0.
 ReLU aktivacijska funkcija je definirana kao:
 \[ f(\textit{net}) = \max(0, \textit{net}) \]
-\begin{figure}[H]
+\FloatBarrier
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{images/ReLU}
     \caption{ReLU}
     \label{fig:slika3}
 \end{figure}
+\FloatBarrier
 
+\section{Višeslojne neuronske mreže}
+\subsection{Struktura mreže}
+Način na koji su neuroni međusobno povezani i organizirani u mreži određuju njezinu arhitekturu te razlikujemo 4 osnovne arhitekture:
+
+\begin{enumerate}
+    \item aciklička mreža
+    \item mreža s povratnom vezom
+    \item lateralno povezana mreža
+    \item hibridne mreže
+\end{enumerate}
+
+AcIklička mreža nema povratnih veza između neurona tako da je propagacija signala jednosmjerna.
+Kod ovakvih vrsta mreža razlikujemo ulazni sloj neurona, skriveni sloj neurona i izlazni sloj neurona.
+Ulazni sloj neurona nemaju ulazne signale odnosno nemaju ulogu neurona već samo propagiraju signal iz ulaznog sloja u prvi skriveni sloj.
+Skriveni sloj se sastoji od jednog ili više sloja neurona. Skriveni slojevi igraju ključnu ulogu u procesu učenja i ekstrakciji značajki iz podataka.
+I na kraju imamo izlazni sloj koji sadrži rezultat.
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/nn-arch}
+    \caption{Aciklička mreža}
+    \label{fig:slika4}
+\end{figure}
+\FloatBarrier
+
+Neuronske mreže s povratnom vezom sadrže u svojoj strukturi barem jednu povratnu vezu.
+Što znači da postoji barem 1 ili više čvorova za koje ako prazimo izlaz neurona kroz sve moguće puteve, nakon konačnog broja koraka ćemo ponovno obići prvobitni čvor.
+Kod ovakve arhitekture ne dijelimo slojeve na ulazne i izlane kao kod acikličke mreže već govorimo o vidljivim i skrivenim čvorovima.
+
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/nn-povratna-veza}
+    \caption{Lateralno povezana mreža}
+    \label{fig:slika5}
+\end{figure}
+\FloatBarrier
+\pagebreak
+Lateralno povezane mreže predstavljaju neuronske mreže gdje neuroni u istom sloju međusobno komuniciraju.
+Često se koristi kako bi se omogućila suradnja između neurona kako bi se pojačale određene značajke unutar sloja.
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Lateral-connected-nn}
+    \caption{Lateralno povezana mreža}
+    \label{fig:slika6}
+\end{figure}
+\FloatBarrier
