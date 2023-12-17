@@ -6,7 +6,7 @@ Neuronske mreže čine podskup strojnog učenja i predstavljaju temelj algoritam
 Inspiracija za strukturu i način rada neuronskih mreža crpi se iz ljudskog mozga pokušavajući oponašazi biološke neurone i njihovu međusobnu komunikaciju.
 
 
-\section{Umjetni neuron}
+\section{Umjetni neuron}\label{sec:umjetni-neuron}
 Prvi model umjetnog neurona je razvijen od strane Warrena McCullocha i Waltera Pittsa, poznat kao McCulloch-Pitts
 model umjetnog neurona. Ovaj model oponaša funkcionalnost biološkog neurona, gdje ulazni signali utječu na odluku neurona o tome hoće li
 se on aktivirati ili ne
@@ -28,7 +28,7 @@ Drugi način težinske sume koristi vekotorski oblik
 \[ net =\vec{w}^T \cdot \vec{x} \]
 Na kraju \textit{net} propustimo kroz takozvanu aktivacijsku funckiju \textit{f} koja će nam dati izlaz.
 
-\subsection{Aktivacijska funkcija}
+\subsection{Aktivacijska funkcija}\label{subsec:aktivacijska-funkcija}
 Aktivacijska funkcija je funkcija koja nam daje izlaz neurona na temelju težinske sume.
 Glavna uloga aktivacijske funkcije je ta što ona odlučuje hoće li neuron biti aktivan ili ne ili bolje rečeno hoće neuron u toj situaciji biti
 važan u ulozi predikcije.
@@ -56,8 +56,9 @@ ReLU aktivacijska funkcija je definirana kao:
 \end{figure}
 \FloatBarrier
 
-\section{Višeslojne neuronske mreže}
-\subsection{Struktura mreže}
+\section{Višeslojne neuronske mreže}\label{sec:viseslojne-neuronske-mreze}
+
+\subsection{Struktura mreže}\label{subsec:struktura-mreze}
 Način na koji su neuroni međusobno povezani i organizirani u mreži određuju njezinu arhitekturu te razlikujemo 4 osnovne arhitekture:
 
 \begin{enumerate}
@@ -104,3 +105,42 @@ Lateralno povezane mreže predstavljaju neuronske mreže gdje neuroni u istom sl
     \label{fig:slika6}
 \end{figure}
 \FloatBarrier
+\section{Backpropagation}\label{sec:backpropagation}
+Backpropagation ili postupak propagacije pogreške unatrag je postupak učenja neuronskih mreža koji se temelji na učinkovitom izračunu svih parcijalnih derivacija
+i njihovoj primjeni na određivanje iznosa kojim korigiramo svaku od težina.
+Algoritam koristi metodu gradijentnog spusta kako bi minimizirao nastalu pogrešku.
+Za neuronsku mrežu koja u izlaznom sloju ima \textit{k} izlaznih neurona i za skup za učenje \textit{D}, ukupna empirijska pogreška iznosi:
+\begin{align*}
+    E(\vec{w}) &= \frac{1}{2N} \sum_{d \in D} \sum_{k \in K} (t_{kd} - o_{kd})^2
+\end{align*}
+gdje je $t_{kd}$ ciljna ili očekivana vrijednost izlaza, a $o_{kd}$ je stvarna izlazna vrijednost, odnosno vrijednost izlaza neurona.
+Algoritam propagacije pogreške unatrag je sljedeći:
+\begin{enumerate}
+    \item Postavimo početne težine na neke slučajno odabrane vrijednosti
+    \item Ponavaljamo postupak dok nije zadovoljen uvjet zaustavljanja
+    \begin{itemize}
+        \item Postavimo podatke za primjer \textit{i} na ulaz mreže
+        \item Izračunamo izlaze svih neurona u svakom sloju
+        \item Odredimo pogrešku \textit{i}-tog neurona na izlaznom sloju prema sljedećem izrazu
+        \begin{align*}
+            \delta_{i}^{K} &= o_{s,i} \cdot (1 - o_{s,i}) \cdot (t_{s,i} - o_{s,i})
+        \end{align*}
+        gdje nam izraz $o_{s,i}$ * (1 - $o_{s,i}$) označava parcijalnu derivaciju prijenosne funkcije, koja je u ovom primjeru sigmoidalna prijenosna funkcija.
+        Izraz ($t_{s,i}$ - $o_{s,i}$) odgovara razlici ciljne i dobivene vrijednosti.
+        \item Nakon toga se vraćamo sloj po sloj prema početku neuronske mreže odnosno ulaznom sloju.
+        Sada je potrebno za svaki neuron \textit{i} u svakom sloju \textit{k} izračunati njegovu pogrešku.
+        To radimo pomoću sljedećeg izraza:
+        \begin{align*}
+            \delta_{i}^{(k)} &= y_{i}^{k} \cdot (1 - y_{i}^{k}) \left(\sum_{d \in D} w_{i,d} \cdot \delta_{d}^{k+1}\right)
+        \end{align*}
+        Opet prepoznajemo derivaciju sigmoidalne prijenosne funkcije, a drugi dio izraza odgovara težinskoj sumi pogrešaka neurona kojem on šalje svoj izlaz.
+        Bolje rečeno zbraja sve pogreške neurona na čiji ulaz utječe trenutni neuron pomnožen s težinskim faktorom.
+        Težinski faktor pokazuje koliko je taj neuron utjecao na iznos pogreške za neuron \textit{s}.
+        \item Nakon toga radimo korekciju tezine $w_{i,j}^k$ prema izrazu:
+        \begin{align*}
+            w_{i,j}^{(k)} \leftarrow w_{i,j}^{(k)} + \eta \cdot y_{i}^k \cdot \delta_{j}^{k+1}\right)
+        \end{align*}
+        gdje nam je \textit{$\eta$} stopa učenja, \textit{$y_{i}^k$} izlaz neurona i u k-tom sloju, a \textit{$\delta_{j}^{k+1}$} pogreška neurona u sljedećem sloju
+    \end{itemize}
+\end{enumerate}
+Kao što se može vidjeti, naziv algoritma je prikladan jer prvo moramo odrediti izlaz mreže, a nakon toga idemo od izlaznog sloja prema ulaznom sloju i računamo pogrešku neurona u svakom sloju od izlaznog prema ulaznom sloju te korigiramo težine.
