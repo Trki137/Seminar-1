@@ -49,3 +49,27 @@ Dalje slijede još dva konvolucijska sloja, jedan sloj za uzrokovanje i dva potp
 Izlazni sloj sastoji se od 10 neurona i koristi Softmax kao aktivacijsku funkciju.
 Softmax je prikladan jer za svaku klasu daje vjerojatnost da ulaz pripada toj klasi, a predikcija se izvodi tako da se odabere klasa s najvećom vjerojatnošću.
 
+\section{AlexNet}\label{sec:alexnet}
+AlexNet je arhitektura konvolucijske neuronske mreže koja se primarno koristi za klasifikaciju slika. Koristi 5 konvolucijskih slojeva u kombinaciji s max poolingom, a na kraju ima 3 potpuno povezana sloja. Kao aktivacijsku funkciju koristi ReLU, osim na izlaznom sloju gdje se i dalje koristi Softmax. Primjenom ReLU aktivacije uspjeli su ubrzati proces treniranja čak 6 puta.
+
+Za razliku od LeNet-5 modela, ulaz u AlexNet je RGB slika dimenzija 227x227.
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/AlexNet}
+    \caption{Arhitektura AlexNet}
+    \label{fig:slika9}
+\end{figure}
+\FloatBarrier
+
+Ako pogledamo arhitekturu, primjećujemo da se broj filtera povećava kako dublje idemo u mrežu, što znači da se može izvući više značajki.
+Također, veličina filtra se smanjuje kako dublje ulazimo u mrežu.
+Mreža se sastoji od 62.3 miliona parametara, za usporedbu LeNet-5 ima 60000.
+Zbog ogromne količine parametara, moramo paziti da nam model ne postane prenaučen te se u tu svrhu koristi regularizacija.
+Kod AlexNet-a za regularizaciju se koristi takozvani dropout.
+Ideja dropout-a je jednostovna: tijekom treninga, nasumično se \enquot{isključuju} određeni neuroni u mreži i ona su privremena i mijenjaju se u svakoj iteraciji treninga.
+Samim time što tijekom treninga mi isključimo jedan dio neurona, dovodi mrežu u situaciju da smanjuje međuovisnost o neuronima, da se prilagodi različitim kombinacijama neurona koji su prisutni.
+Kao uvijek imamo i šumove u podatcima, a pomoću dropout-a mi sprečavamo memorizaciju šumova što pomaže da model bolje generalizira.
+Naravno tijekom testiranja dropout se ne radi.
+
+
