@@ -24,3 +24,28 @@ Arhitektura Neocognitrona sastoji se od alternirajućih S i C slojeva, pri čemu
 S stanice, ili jednostavne stanice, služe za detekciju lokalnih značajki, dok C stanice, ili kompleksne stanice, služe za dodavanje tolerancije prema samoj poziciji objekta.
 Na taj način dobivamo model koji je invarijantan na translacijske promjene, odnosno trebao bi prepoznati oblik bez obzira na to gdje se nalazi na slici.
 
+\section{LeNet-5}\label{sec:lenet-5}
+LeNet-5 je dizajnirana od strane francuskog informatičara Yanna LeCuna između 1989. i 1998. godine i postigla je uspjeh u prepoznavanju rukom pisanih brojeva.
+
+Arhitektura se sastojala od tri konvolucijska sloja i dva sloja za uzrokovanje koji su bili međusobno alternirajući. Na kraju su se nalazila dva potpuno povezana sloja.
+
+U konvolucijskim slojevima koristio se 5x5 filter s korakom veličine 1, odnosno s pomakom veličine 1. S druge strane, slojevi za uzrokovanje bili su 2x2 s pomakom veličine 2.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/LeNet}
+    \caption{Arhitektura LeNet-5.}
+    \label{fig:slika8}
+\end{figure}
+Dimenzija ulazne slike je 32x32x1 jer se ova arhitektura uglavnom koristila za prepoznavanje rukom pisanih brojeva. Dimenzije označavaju širinu, visinu i dubinu slike. Za crno-bijele slike dubina je 1, što znači da postoji samo jedan kanal. Za RGB slike, dubina bi bila 3 (jedan kanal za crvenu, zelenu i plavu komponentu svake boje).
+
+Prvi konvolucijski sloj ima 6 filtera veličine 5x5 s pomakom od 1.
+Rezultat tog sloja je značajka veličine 28x28x6.
+Izlazni sloj se može izračunati pomoću formule: \[ \textit{dimenzija} = \frac{\textit{ulazna dimenzija} - \textit{veličina filtera}}{\textit{korak}} + 1 \].
+
+Nakon toga slijedi sloj za uzrokovanje veličine 2x2.
+Ovdje se koristi average pooling koji za vrijednost uzima prosjek od odabrane 4 vrijednosti.
+
+Dalje slijede još dva konvolucijska sloja, jedan sloj za uzrokovanje i dva potpuno povezana sloja, od kojih je jedan izlazni sloj.
+Izlazni sloj sastoji se od 10 neurona i koristi Softmax kao aktivacijsku funkciju.
+Softmax je prikladan jer za svaku klasu daje vjerojatnost da ulaz pripada toj klasi, a predikcija se izvodi tako da se odabere klasa s najvećom vjerojatnošću.
+
