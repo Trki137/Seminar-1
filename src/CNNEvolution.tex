@@ -93,3 +93,31 @@ Recimo VGG16 će u konačnici imati 138357544 parametara.
 Za treniranje se koristi gradijentni spust s momentom \emph{0.9}.
 Kao regularizaciju koristi L2 regularizaciju i dropout koji se koristi nakon drugog potpuno povezanog sloja s vrijednosti od 50\%.
 
+\section{GoogLeNet}\label{sec:googlenet}
+GoogLeNet je razvijena od strane Googla i oni su se fokusirali na arhitekturi koja ima što veću dubinu, baš kao što je radila Visual Geometry Group s VGGNet-om.
+Ali za razliku od prethodnika, dodantan fokus je bio na smanjenju parametara i boljoj memorijskoj efikasnosti
+Ovaj model broji do 22 sloja, ali ovaj model uopće nema potpuno povezane slojeve što je drastično smanjilo broj parametara, točnije na 5 miliona.
+
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/GoogLeNet}
+    \caption{Arhitektura GoogleLeNet}
+    \label{fig:slika11}
+\end{figure}
+\FloatBarrier
+
+Ključna inovacija za ovaj uspjeh je bio inception model koji se koristi više puta kroz mrežu.
+Glavna ideja iza inception modela je da ne biramo mi da li ćemo koristit konvoluciju 1x1 ili 3x3 ili 5x5 ili ćemo možda koristiti max pooling, nego koristimo sve to zajedno i na kraju konkateniramo rezultat.
+Naravno nije sve idealno, pa tako i ovaj način ima nedostataka.
+Glavni nedostatak je taj što je računski dosta zahtjevno jer traži puno operacija za bi se obradio jedan inception sloj.
+Ali kako bi se smanjio broj operacija koji se mora izvesti unutar jednog inception sloja, onda se prvo provuče kroz konvoluciju 1x1 a tek onda na konvolucije 3x3 ili 5x5.
+
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/Inception}
+    \caption{Inception model}
+    \label{fig:slika12}
+\end{figure}
+\FloatBarrier
