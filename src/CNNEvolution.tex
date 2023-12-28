@@ -72,4 +72,24 @@ Samim time što tijekom treninga mi isključimo jedan dio neurona, dovodi mrežu
 Kao uvijek imamo i šumove u podatcima, a pomoću dropout-a mi sprečavamo memorizaciju šumova što pomaže da model bolje generalizira.
 Naravno tijekom testiranja dropout se ne radi.
 
+\section{VGGNet}\label{sec:vggnet}
+VGGNet arhitektura je razvijena od strane Visual Geometry Group na Sveučilištu Oxford.
+Grupa je radila s pretpostavkom da dublje strukture konvolucijskih mreža mogu bolje modelirati nelinearnosti.
+
+\FloatBarrier
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/VGGNet}
+    \caption{Arhitektura VGGNet}
+    \label{fig:slika10}
+\end{figure}
+\FloatBarrier
+
+Ulaz u mrežu je RGB slika dimenzija 224x224.
+Imamo modele čija se dubina razlikuje u rasponu od VGG11 do VGG19, gdje je VGG11 se sastoji od 8 konvolucijskih slojeva i 3 potpuno povezana sloja, dok VGG19 se sastoji od 16 konvolucijsih i 3 potpuno povezana sloja.
+Da bi smanjili broj parametara, odlučili su postaviti veličinu filtra na 3x3 za svaki sloj u mreži.
+Ali i sa tom modifikacijom model će imati ogroman broj parametara.
+Recimo VGG16 će u konačnici imati 138357544 parametara.
+Za treniranje se koristi gradijentni spust s momentom \emph{0.9}.
+Kao regularizaciju koristi L2 regularizaciju i dropout koji se koristi nakon drugog potpuno povezanog sloja s vrijednosti od 50\%.
 
