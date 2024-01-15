@@ -26,8 +26,9 @@ McCulloch-Pitts model umjetnog neurona sastoji se od \textit{n} ulaznih značajk
 
 Težinska suma neurona \emph{net} se izračunava kao suma ulaznih značajki
 \[ net = x_0*w_0 + x_1*w_1 + \dots + x_n*w_n \]
-Gdje nam $w_0$ označava takozvana vrijednost praga \emph(bias) koji služi kako bismo odredili kada će neuron biti aktivan ili ne.
-Dok nam $x_0$ služi samo radi lakšeg matematičkog zapisa i on je uvijek jedank 1. Znajući sve ovo sad možemo težinsku sumu napisati kao
+Takozvana vrijednost praga \emph(bias), označena kao $w_0$, koristi se kako bi se odredilo kada će neuron biti aktivan ili ne
+Dok nam $x_0$ služi samo radi lakšeg matematičkog zapisa, on je uvijek postavljen na 1.
+Znajući sve ovo sad možemo težinsku sumu napisati kao
 \[ net = \sum_{i=0}^{\n} w_0*x_0 \]
 Drugi način težinske sume koristi vekotorski oblik
 \[ net =\vec{w}^T \cdot \vec{x} \]
@@ -75,12 +76,12 @@ Način na koji su neuroni međusobno povezani i organizirani u mreži određuju 
     \item hibridne mreže
 \end{enumerate}
 
-AcIklička mreža nema povratnih veza između neurona tako da je propagacija signala jednosmjerna.
+Aciklička mreža nema povratnih veza između neurona tako da je propagacija signala jednosmjerna.
 Kod ovakvih vrsta mreža razlikujemo ulazni sloj neurona, skriveni sloj neurona i izlazni sloj neurona.
 Ulazni sloj neurona nemaju ulazne signale odnosno nemaju ulogu neurona već samo propagiraju signal iz ulaznog sloja u prvi skriveni sloj.
 Skriveni sloj se sastoji od jednog ili više sloja neurona.
 Skriveni slojevi igraju ključnu ulogu u procesu učenja i ekstrakciji značajki iz podataka.
-I na kraju imamo izlazni sloj koji sadrži rezultat.
+Na kraju, izlazni sloj sadrži rezultat.
 \FloatBarrier
 \begin{figure}[h]
     \centering
@@ -94,9 +95,8 @@ I na kraju imamo izlazni sloj koji sadrži rezultat.
 \footnotetext{\url{https://www.ibm.com/topics/neural-networks}}
 
 Neuronske mreže s povratnom vezom sadrže u svojoj strukturi barem jednu povratnu vezu.
-Što znači da postoji barem 1 ili više čvorova za koje ako prazimo izlaz neurona kroz sve moguće puteve, nakon konačnog broja koraka ćemo ponovno obići prvobitni čvor.
-Kod ovakve arhitekture ne dijelimo slojeve na ulazne i izlane kao kod acikličke mreže već govorimo o vidljivim i skrivenim čvorovima.
-
+To znači da postoji najmanje 1 ili više čvorova za koje, prateći izlaz neurona kroz sve moguće puteve, nakon konačnog broja koraka ćemo ponovno obići prvobitni čvor.
+U ovakvoj arhitekturi, slojeve ne djelimo na ulazne i izlazne, kao što je slučaj kod acikličkih mreža, već govorimo o vidljivim i skrivenim čvorovima.
 \FloatBarrier
 \begin{figure}[h]
     \centering

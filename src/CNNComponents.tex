@@ -9,7 +9,7 @@ U matematičkom smislu, konvolucija predstavlja proces kombiniranja dviju funkci
 Jedan od glavnih gradivnih blokova konvolucijske neuronske mreže je konvolucijski sloj.
 Sloj se sastoji od ulaznih vektora, izlaznih vektora ili mapa značajki i sastoji se od filtra ili kernela.
 Filtri su uglavnom male matrice veličine 3x3, 5x5 ili 1x1, a sami filtri služe da izvuču bitne informacije \emph{značajke} iz ulaznih vektora.
-Iz tog razloga nećemo imati samo jedan filtar, jer s jednim filtrom ne možemo izvući sve potrebne značajke.
+Iz tog razloga, neće imati samo jedan filter, jer s jednim filtrom ne mogu se izvući sve potrebne značajke.
 Filtar se primjenjuje na ulazne podatke tako što pomnoži elemente na istim pozicijama i sumira njihove vrijednosti.
 Taj proces je poznat kao konvolucija.
 
@@ -46,7 +46,7 @@ Jasno je da veći korak rezultira manjom dimenzijom izlaza, i obrnuto.
 Problem je što na ovaj način možemo izgubiti potrebne informacije, a i informacije koje se nalaze na samom rubu i u kutovima se puno manje koriste.
 Zbog toga imamo takozvani \enquote{padding}, što je zapravo proces nadopunjavanja ulazne matrice.
 Postoje dvije tehnike nadopunjavanja: bez nadopunjavanja (\emph{valid padding}) i nadopunjavanje istom količinom (\emph{same padding}).
-Kod tehnike \emph{valid padding}, zapravo ne radimo ništa i dozvoljavamo da se dimenzija izlaza smanji, dok kod \emph{same padding} tehnike dodajemo dodatne retke i stupce, popunjene nulama, kako bismo očuvali dimenziju izlaza i dali više značaja originalnim rubnim pozicijama.
+U tehnici \emph{valid padding}, zapravo se ne radi ništa i dozvoljava se da se dimenzija izlaza smanji, dok se u \emph{same padding} tehnici dodaju dodatni redci i stupci, popunjeni nulama, kako bi dimenzija izlaza bila očuvana i kako bi se više značaja pridalo originalnim rubnim pozicijama.
 
 \FloatBarrier
 \begin{figure}[h]

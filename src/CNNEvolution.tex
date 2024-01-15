@@ -7,7 +7,6 @@ U posljednjem razdoblju, KNM arhitektura doživjela je značajan tehnološki nap
 Ovaj napredak omogućio je postizanje rezultata koji su prije bili nezamislivi, često se približavajući ili čak nadmašujući ljudske sposobnosti u određenim zadacima vizualne analize.
 Današnje vrijeme karakterizira raznolikost KNM-ova, s različitim arhitekturama koje su prilagođene specifičnim zadatcima.
 Svaka arhitektura ima svoje prednosti i mane, a \enquote{Teorem besplatnog ručka} ukazuje na to da nema univerzalno najbolje arhitekture.
-Zato ćemo sada malo proći kroz evoluciju konvolucijskih neuronskih mreža od samih početaka pa do danas.
 
 \section{Neocognitron}\label{sec:neocognitron}
 Možemo reći da je Neocognitron preteča konvolucijskih neuronskih mreža.
@@ -69,14 +68,15 @@ Za razliku od LeNet-5 modela, ulaz u AlexNet je RGB slika dimenzija 227x227.
 \FloatBarrier
 \footnotetext{\url{https://www.analyticsvidhya.com/blog/2021/03/introduction-to-the-architecture-of-alexnet/}}
 
-Ako pogledamo arhitekturu, primjećujemo da se broj filtera povećava kako dublje idemo u mrežu, što znači da se može izvući više značajki.
+
+Ako se pogleda arhitektura, primjećuje se da se broj filtera povećava kako dublje ide u mrežu, što znači da se može izvući više značajki.
 Također, veličina filtra se smanjuje kako dublje ulazimo u mrežu.
 Mreža se sastoji od 62.3 miliona parametara, za usporedbu LeNet-5 ima 60000.
 Zbog ogromne količine parametara, moramo paziti da nam model ne postane prenaučen te se u tu svrhu koristi regularizacija.
 Kod AlexNet-a za regularizaciju se koristi takozvani dropout.
 Ideja dropout-a je jednostovna: tijekom treninga, nasumično se \enquot{isključuju} određeni neuroni u mreži i ona su privremena i mijenjaju se u svakoj iteraciji treninga.
 Samim time što tijekom treninga mi isključimo jedan dio neurona, dovodi mrežu u situaciju da smanjuje međuovisnost o neuronima, da se prilagodi različitim kombinacijama neurona koji su prisutni.
-Kao uvijek imamo i šumove u podatcima, a pomoću dropout-a mi sprečavamo memorizaciju šumova što pomaže da model bolje generalizira.
+Kao uvijek postoje i šumovi u podatcima, a pomoću dropout-a sprečava se memorizacija šumova što pomaže da model bolje generalizira.
 Naravno tijekom testiranja dropout se ne radi.
 
 \section{VGGNet}\label{sec:vggnet}
@@ -94,8 +94,8 @@ Grupa je radila s pretpostavkom da dublje strukture konvolucijskih mreža mogu b
 \FloatBarrier
 \footnotetext{\url{https://www.kaggle.com/code/blurredmachine/vggnet-16-architecture-a-complete-guide}}
 Ulaz u mrežu je RGB slika dimenzija 224x224.
-Imamo modele čija se dubina razlikuje u rasponu od VGG11 do VGG19, gdje je VGG11 se sastoji od 8 konvolucijskih slojeva i 3 potpuno povezana sloja, dok VGG19 se sastoji od 16 konvolucijsih i 3 potpuno povezana sloja.
-Da bi smanjili broj parametara, odlučili su postaviti veličinu filtra na 3x3 za svaki sloj u mreži.
+Modeli čija se dubina razlikuje u rasponu od VGG11 do VGG19 imaju različite strukture, pri čemu je VGG11 sastavljen od 8 konvolucijskih slojeva i 3 potpuno povezana sloja, dok VGG19 ima 16 konvolucijskih slojeva i 3 potpuno povezana sloja.
+Kako bi se smanjio broj parametara, odlučeno je postaviti veličinu filtra na 3x3 za svaki sloj u mreži.
 Ali i sa tom modifikacijom model će imati ogroman broj parametara.
 Recimo VGG16 će u konačnici imati 138357544 parametara.
 Za treniranje se koristi gradijentni spust s momentom \emph{0.9}.
