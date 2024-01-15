@@ -1,7 +1,7 @@
 %! Author = Dean
 %! Date = 12/16/2023
 
-\chapter{Transfer Learning}\label{ch:transfer-learning}
+\chapter{Učenje prijenosom znanja}\label{ch:transfer-learning}
 
 \emph{Transfer learning} označava ponovno korištenje istreniranog modela .
 Drugim riječima, koristi se znanje stečeno treniranjem jednog modela na određenom skupu podataka kako bi se poboljšala izvedba drugog modela.
@@ -12,13 +12,15 @@ Učinkovitost transfer learning-a postiže se kada model koji se prenosi dijeli 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{images/Transfer-learning}
-    \caption{Treniranje pomoću \emph{transfer learning-a}}
+    \caption{Treniranje pomoću \emph{transfer learning-a}
+    \protect\footnotemark}
     \label{fig:slika17}
 \end{figure}
 \FloatBarrier
+\footnotetext{\url{https://www.coursera.org/projects/ai-powered-chest-disease-detection-and-classification}}
 
 Transfer learning pruža nekoliko ključnih prednosti.
-Prvo znalajno ubrzava vrijeme treniranjam budući da model već posjeduje općenite značajke koje je prepoznao pri prvom treniranju.
+Prvo značajno ubrzava vrijeme treniranjam budući da model već posjeduje općenite značajke koje je prepoznao pri prvom treniranju.
 Također, može značajno poboljšati performanse neuronske mreže, posebno kada imamo ograničeni skup podataka.
 Taj dio je izuzetno važan jer za treniranje cijele mreže potrebna je velika količina podataka, a ona nekad jednostavno nije dostupna.
 

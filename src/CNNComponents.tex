@@ -9,18 +9,21 @@ U matematičkom smislu, konvolucija predstavlja proces kombiniranja dviju funkci
 Jedan od glavnih gradivnih blokova konvolucijske neuronske mreže je konvolucijski sloj.
 Sloj se sastoji od ulaznih vektora, izlaznih vektora ili mapa značajki i sastoji se od filtra ili kernela.
 Filtri su uglavnom male matrice veličine 3x3, 5x5 ili 1x1, a sami filtri služe da izvuču bitne informacije \emph{značajke} iz ulaznih vektora.
-Iz tog razloga nećemo imati samo jedan filtar, jer s jednim filtrom ne možemo izvući sve potrebne značajke.
+Iz tog razloga, neće imati samo jedan filter, jer s jednim filtrom ne mogu se izvući sve potrebne značajke.
 Filtar se primjenjuje na ulazne podatke tako što pomnoži elemente na istim pozicijama i sumira njihove vrijednosti.
 Taj proces je poznat kao konvolucija.
 
 \FloatBarrier
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Convolution}
-    \caption{Konvolucijski sloj}
+    \includegraphics[width=0.7\textwidth]{images/Convolution}
+    \caption{Konvolucijski sloj
+    \protect\footnotemark}
     \label{fig:slika13}
 \end{figure}
 \FloatBarrier
+
+\footnotetext{\url{https://www.analyticsvidhya.com/blog/2022/03/basics-of-cnn-in-deep-learning/}}
 
 U konvolucijskom sloju koristimo nadopunjavanje \emph{padding} i korak \emph{stride}, a oni zapravo određuju kako će se prevesti konvolucija ulaznih podataka i dimenzija izlaza.
 Za njih možemo reći da su hiperparametri.
@@ -31,25 +34,31 @@ Jasno je da veći korak rezultira manjom dimenzijom izlaza, i obrnuto.
 \FloatBarrier
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Stride}
-    \caption{Učinak različitih vrijednosti koraka \emph{stride}}
+    \includegraphics[width=0.7\textwidth]{images/Stride}
+    \caption{Učinak različitih vrijednosti koraka \emph{stride}
+    \protect\footnotemark}
     \label{fig:slika14}
 \end{figure}
 \FloatBarrier
+\footnotetext{\url{https://www.analyticsvidhya.com/blog/2022/03/basics-of-cnn-in-deep-learning/}}
+
 
 Problem je što na ovaj način možemo izgubiti potrebne informacije, a i informacije koje se nalaze na samom rubu i u kutovima se puno manje koriste.
 Zbog toga imamo takozvani \enquote{padding}, što je zapravo proces nadopunjavanja ulazne matrice.
 Postoje dvije tehnike nadopunjavanja: bez nadopunjavanja (\emph{valid padding}) i nadopunjavanje istom količinom (\emph{same padding}).
-Kod tehnike \emph{valid padding}, zapravo ne radimo ništa i dozvoljavamo da se dimenzija izlaza smanji, dok kod \emph{same padding} tehnike dodajemo dodatne retke i stupce, popunjene nulama, kako bismo očuvali dimenziju izlaza i dali više značaja originalnim rubnim pozicijama.
+U tehnici \emph{valid padding}, zapravo se ne radi ništa i dozvoljava se da se dimenzija izlaza smanji, dok se u \emph{same padding} tehnici dodaju dodatni redci i stupci, popunjeni nulama, kako bi dimenzija izlaza bila očuvana i kako bi se više značaja pridalo originalnim rubnim pozicijama.
 
 \FloatBarrier
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Padding}
-    \caption{Učinak nadopunjavanja \emph{same padding}}
+    \includegraphics[width=0.6\textwidth]{images/Padding}
+    \caption{Učinak nadopunjavanja \emph{same padding}
+    \protect\footnotemark}
     \label{fig:slika15}
 \end{figure}
 \FloatBarrier
+\footnotetext{\url{https://www.geeksforgeeks.org/cnn-introduction-to-padding/}}
+
 
 \section{Sloj uzrokovanja}\label{sec:sloj-uzrokovanja}
 Uloga ovog sloja je postupno smanjiti dimenzije svake značajke, odnosno izlaza konvolucijskog sloja, i na taj način smanjiti broj parametara.
@@ -58,11 +67,14 @@ Obično se sloj za uzrokovanje radi s matricom 2x2.
 \FloatBarrier
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Pooling}
-    \caption{Prikaz \emph{max padding-a} i \emph{average padding-a} }
+    \includegraphics[width=0.7\textwidth]{images/Pooling}
+    \caption{Prikaz \emph{max padding-a} i \emph{average padding-a}
+    \protect\footnotemark}
     \label{fig:slika16}
 \end{figure}
 \FloatBarrier
+\footnotetext{\url{https://www.geeksforgeeks.org/cnn-introduction-to-padding/}}
+
 
 Postoje dvije metode za uzrokovanje: \emph{average pooling} metoda računa prosjek elemenata u matrici, dok \emph{max pooling} metoda, češće korištena, uzima element s najvećom vrijednošću.
 Što je veća matrica za uzrokovanje, to će dimenzije biti manje, i obrnuto.
