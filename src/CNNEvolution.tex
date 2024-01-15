@@ -16,10 +16,12 @@ Ova arhitektura je prva uvela pojmove kao što su ekstrakcija značajki (\emph{f
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{images/Neocognitron}
-    \caption{Arhitektura Neocognitron}
+    \caption{Arhitektura Neocognitron
+    \protect\footnotemark}
     \label{fig:slika7}
 \end{figure}
 \FloatBarrier
+\footnotetext{\url{https://www.researchgate.net/figure/The-architecture-of-the-neocognitron_fig1_336163445}}
 Arhitektura Neocognitrona sastoji se od alternirajućih S i C slojeva, pri čemu svaki od njih sadrži S i C stanice.
 S stanice, ili jednostavne stanice, služe za detekciju lokalnih značajki, dok C stanice, ili kompleksne stanice, služe za dodavanje tolerancije prema samoj poziciji objekta.
 Na taj način dobivamo model koji je invarijantan na translacijske promjene, odnosno trebao bi prepoznati oblik bez obzira na to gdje se nalazi na slici.
@@ -33,9 +35,12 @@ U konvolucijskim slojevima koristio se 5x5 filter s korakom veličine 1, odnosno
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{images/LeNet}
-    \caption{Arhitektura LeNet-5.}
+    \caption{Arhitektura LeNet-5.
+    \protect\footnotemark}
     \label{fig:slika8}
 \end{figure}
+\footnotetext{\url{https://www.analyticsvidhya.com/blog/2021/03/the-architecture-of-lenet-5/}}
+
 Dimenzija ulazne slike je 32x32x1 jer se ova arhitektura uglavnom koristila za prepoznavanje rukom pisanih brojeva. Dimenzije označavaju širinu, visinu i dubinu slike. Za crno-bijele slike dubina je 1, što znači da postoji samo jedan kanal. Za RGB slike, dubina bi bila 3 (jedan kanal za crvenu, zelenu i plavu komponentu svake boje).
 
 Prvi konvolucijski sloj ima 6 filtera veličine 5x5 s pomakom od 1.
@@ -57,10 +62,12 @@ Za razliku od LeNet-5 modela, ulaz u AlexNet je RGB slika dimenzija 227x227.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{images/AlexNet}
-    \caption{Arhitektura AlexNet}
+    \caption{Arhitektura AlexNet
+    \protect\footnotemark}
     \label{fig:slika9}
 \end{figure}
 \FloatBarrier
+\footnotetext{\url{https://www.analyticsvidhya.com/blog/2021/03/introduction-to-the-architecture-of-alexnet/}}
 
 Ako pogledamo arhitekturu, primjećujemo da se broj filtera povećava kako dublje idemo u mrežu, što znači da se može izvući više značajki.
 Također, veličina filtra se smanjuje kako dublje ulazimo u mrežu.
@@ -80,11 +87,12 @@ Grupa je radila s pretpostavkom da dublje strukture konvolucijskih mreža mogu b
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{images/VGGNet}
-    \caption{Arhitektura VGGNet}
+    \caption{Arhitektura VGGNet
+    \protect\footnotemark}
     \label{fig:slika10}
 \end{figure}
 \FloatBarrier
-
+\footnotetext{\url{https://www.kaggle.com/code/blurredmachine/vggnet-16-architecture-a-complete-guide}}
 Ulaz u mrežu je RGB slika dimenzija 224x224.
 Imamo modele čija se dubina razlikuje u rasponu od VGG11 do VGG19, gdje je VGG11 se sastoji od 8 konvolucijskih slojeva i 3 potpuno povezana sloja, dok VGG19 se sastoji od 16 konvolucijsih i 3 potpuno povezana sloja.
 Da bi smanjili broj parametara, odlučili su postaviti veličinu filtra na 3x3 za svaki sloj u mreži.
@@ -102,10 +110,12 @@ Ovaj model broji do 22 sloja, ali ovaj model uopće nema potpuno povezane slojev
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{images/GoogLeNet}
-    \caption{Arhitektura GoogleLeNet}
+    \caption{Arhitektura GoogleLeNet
+    \protect\footnotemark}
     \label{fig:slika11}
 \end{figure}
 \FloatBarrier
+\footnotetext{\url{https://ai.plainenglish.io/googlenet-inceptionv1-with-tensorflow-9e7f3a161e87}}
 
 Ključna inovacija za ovaj uspjeh je bio inception model koji se koristi više puta kroz mrežu.
 Glavna ideja iza inception modela je da ne biramo mi da li ćemo koristit konvoluciju 1x1 ili 3x3 ili 5x5 ili ćemo možda koristiti max pooling, nego koristimo sve to zajedno i na kraju konkateniramo rezultat.
@@ -116,8 +126,10 @@ Ali kako bi se smanjio broj operacija koji se mora izvesti unutar jednog incepti
 \FloatBarrier
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\textwidth]{images/Inception}
-    \caption{Inception model}
+    \includegraphics[width=0.4\textwidth]{images/Inception}
+    \caption{Inception model
+    \protect\footnotemark}
     \label{fig:slika12}
 \end{figure}
 \FloatBarrier
+\footnotetext{\url{https://ai.plainenglish.io/googlenet-inceptionv1-with-tensorflow-9e7f3a161e87}}
